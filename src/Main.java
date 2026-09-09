@@ -25,14 +25,10 @@ public class Main {
             }
         }
 
-        // 3. Instantiate your core components
+        // instantiate core components
         SpotifyAuthenticator auth = new SpotifyAuthenticator();
         SpotifyApiClient client = new SpotifyApiClient();
-
-        // 4. Inject the components into the Orchestrator
         PlaylistOrchestrator orchestrator = new PlaylistOrchestrator(auth, client, partitionStrategy);
-
-        // 5. Execute the master flow
         System.out.println("Starting Spotify Playlist Generator for " + amountOfDays + " days...");
         orchestrator.execute(amountOfDays);
     }

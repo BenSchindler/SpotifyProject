@@ -35,12 +35,9 @@ class PlaylistOrchestrator {
 
             //  populate the playlist
             client.addTracksToPlaylist(accessToken, playlistId, trackUris);
+            System.out.println("added playlist number " +i+1);
         }
-
-        System.out.println("Success! All playlists have been created.");
-        }
-
-
     }
+}
 
 

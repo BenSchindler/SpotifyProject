@@ -21,8 +21,6 @@ public class SpotifyApiClient {
         try{
             HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
             String JsonResponse = response.body();
-            System.out.println("Status Code: " + response.statusCode());
-            System.out.println("Response Body: " + JsonResponse);
             String[] words = JsonResponse.split("\\s+");
             boolean found = false;
             for(String word : words){
@@ -49,8 +47,6 @@ public class SpotifyApiClient {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(next)).header("Authorization", "Bearer "+accessToken).GET().build();
             try{
                 HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
-                System.out.println("Liked Songs Status: " + response.statusCode());
-                System.out.println("Liked Songs Body: " + response.body());
                 String JsonResponse = response.body(); //JSON body of the response from server
                 JSONObject jsonObject = new JSONObject(JsonResponse);
                 JSONArray items = jsonObject.getJSONArray("items");
@@ -84,8 +80,6 @@ public class SpotifyApiClient {
                 ("Authorization", "Bearer "+accessToken, "Content-Type","application/json").POST(BodyPublishers.ofString(jsonPayload)).build();
         try{
             HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
-            System.out.println("Liked Songs Status: " + response.statusCode());
-            System.out.println("Liked Songs Body: " + response.body());
             String jsonResposne = response.body();
             JSONObject jsonObject = new JSONObject(jsonResposne);
             return jsonObject.getString("id");
